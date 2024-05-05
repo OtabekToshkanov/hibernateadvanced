@@ -15,7 +15,7 @@
 
 <form sec:authorize="hasAnyRole('ADMIN')" th:action="@{web/instructors}">
     <button class="btn btn-primary">
-        Instructors form
+        Instructors
     </button>
 </form>
 
@@ -23,7 +23,7 @@
 
 <form sec:authorize="hasAnyRole('ADMIN' , 'INSTRUCTOR')" th:action="@{web/courses}">
     <button class="btn btn-primary">
-        Courses form
+        Courses
     </button>
 </form>
 
@@ -31,7 +31,7 @@
 
 <form sec:authorize="hasAnyRole('ADMIN' , 'INSTRUCTOR')" th:action="@{web/students}">
     <button class="btn btn-primary">
-        Students form
+        Students
     </button>
 </form>
 

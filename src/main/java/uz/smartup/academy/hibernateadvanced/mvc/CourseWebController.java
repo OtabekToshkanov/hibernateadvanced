@@ -27,6 +27,15 @@ public class CourseWebController {
         return "courses";
     }
 
+    @GetMapping("/{id}/reviews")
+    public String courseReviews(@PathVariable("id") int id, Model model) {
+        List<ReviewDTO> reviews = service.getCourseReviewsById(id);
+
+        model.addAttribute("reviews", reviews);
+
+        return "courseReviews";
+    }
+
     @RequestMapping("/{courseId}/delete")
     public String deleteCourse(@PathVariable("courseId") int id) {
 //        System.out.println(id);

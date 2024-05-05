@@ -83,6 +83,7 @@ public class StudentWebController {
     @GetMapping("/{id}/courses/{courseId}/reviews")
     public String  getReviews(@PathVariable int id, @PathVariable int courseId, Model model) {
         model.addAttribute("reviews", service.getReviews(id, courseId));
+        model.addAttribute("studentId", id);
 
         return "studentReviews";
     }

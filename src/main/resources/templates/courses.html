@@ -22,6 +22,7 @@
             <th scope="col">Instructor id</th>
             <th scope="col">Delete course</th>
             <th scope="col">Update</th>
+            <th scope="col">Reviews</th>
             <th scope="col">More info</th>
         </tr>
         </thead>
@@ -48,6 +49,14 @@
                 <form th:action="@{courses/{id}/updateForm(id=${course.id})}">
                     <button class="btn btn-success">
                         <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                </form>
+            </td>
+
+            <td>
+                <form th:action="@{courses/{id}/reviews(id=${course.id})}" method="GET">
+                    <button class="btn btn-warning">
+                        <i class="fa-solid fa-star"></i>
                     </button>
                 </form>
             </td>

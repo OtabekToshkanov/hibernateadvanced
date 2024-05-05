@@ -62,6 +62,7 @@
             <th scope="col">Title</th>
             <th scope="col">Description</th>
             <th scope="col">Price</th>
+            <th scope="col">delete</th>
         </tr>
         </thead>
         <tbody>
@@ -72,6 +73,14 @@
             <td th:text="${course.description}"></td>
             <td th:text="${course.price}"></td>
 
+            <td>
+                <form th:action="@{{id}/courses/{courseId}/delete(id=${instructor.id}, courseId=${course.id} )}" method="POST">
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                </form>
+            </td>
 
 
         </tr>

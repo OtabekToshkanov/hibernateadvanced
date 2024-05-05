@@ -18,10 +18,10 @@ import javax.sql.DataSource;
 @Configuration
 public class SecurityConfiguration {
 //
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(12);
+    }
 
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource) {

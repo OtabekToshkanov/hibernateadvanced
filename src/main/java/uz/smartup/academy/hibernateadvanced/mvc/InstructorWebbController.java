@@ -95,6 +95,14 @@ public class InstructorWebbController {
         return "updateInstructor";
     }
 
+    @RequestMapping("/{id}/courses/{courseId}/delete")
+    public String deleteCourse(@PathVariable("courseId") int courseId, @PathVariable("id") int id, RedirectAttributes attributes) {
+        courseService.deleteCourseById(courseId);
+
+        attributes.addAttribute("id", id);
+
+        return "redirect:/web/instructors/{id}";
+    }
 
     @RequestMapping("/{id}/update")
     public String updateMapping(@PathVariable int id, @ModelAttribute("instructor") InstructorDTO instructor ) {
