@@ -24,8 +24,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "username", referencedColumnName = "username")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "username", referencedColumnName = "username", updatable = false) // <-- changed
     private Set<Role> roles;
 
     public long getId() {

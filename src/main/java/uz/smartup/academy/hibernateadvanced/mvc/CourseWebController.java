@@ -35,6 +35,15 @@ public class CourseWebController {
         return "redirect:/web/courses";
     }
 
+    @GetMapping("/{id}/courseReview")
+    public String getCourseReview(@PathVariable("id") int id, Model model) {
+        List<ReviewDTO> reviews = service.getCourseReviewsById(id);
+
+        model.addAttribute("reviews", reviews);
+
+        return "courseReview";
+    }
+
     @RequestMapping("/{id}/updateForm")
     public String updateCourseForm(@PathVariable("id") int id, Model model) {
         model.addAttribute("course", service.getCourseById(id));

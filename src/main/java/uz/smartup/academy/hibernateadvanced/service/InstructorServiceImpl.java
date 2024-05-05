@@ -38,7 +38,7 @@ public class InstructorServiceImpl implements InstructorService {
         Set<Role> roles = new HashSet<>();
         Role role = new Role();
         role.setRole("ROLE_INSTRUCTOR");
-        role.setUsername(instructor.getUser().getUsername());
+//        role.setUsername(instructor.getUser().getUsername());
         roles.add(role);
 
         userService.registerUser(instructor.getUser(), roles);

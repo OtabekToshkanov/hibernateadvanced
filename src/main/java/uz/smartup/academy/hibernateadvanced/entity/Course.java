@@ -26,8 +26,8 @@ public class Course {
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "course_id")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "course_id", updatable = false)
     private List<Review> reviews;
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})

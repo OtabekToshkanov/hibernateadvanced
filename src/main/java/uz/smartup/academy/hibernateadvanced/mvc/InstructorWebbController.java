@@ -2,6 +2,8 @@ package uz.smartup.academy.hibernateadvanced.mvc;
 
 
 import jakarta.validation.Valid;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import uz.smartup.academy.hibernateadvanced.dto.CourseDTO;
 import uz.smartup.academy.hibernateadvanced.dto.InstructorDTO;
+import uz.smartup.academy.hibernateadvanced.dto.ReviewDTO;
 import uz.smartup.academy.hibernateadvanced.entity.Role;
 import uz.smartup.academy.hibernateadvanced.entity.User;
 import uz.smartup.academy.hibernateadvanced.service.CourseService;
@@ -29,6 +32,15 @@ public class InstructorWebbController {
     public InstructorWebbController(InstructorService service, CourseService courseService, UserService userService) {
         this.service = service;
         this.courseService = courseService;
+    }
+
+    private UserDetails getLoggedInUser() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if(principal instanceof UserDetails)
+            return (UserDetails) principal;
+
+        return null;
     }
 
     @GetMapping
@@ -55,7 +67,7 @@ public class InstructorWebbController {
         return "createInstructor";
     }
     @PostMapping("/saveInstructor")
-    public String saveInstructor(@Valid @ModelAttribute("instructor") InstructorDTO instructorDTO, BindingResult bindingResult, Model model) {
+    public String saveInstructor(@ModelAttribute("instructor") InstructorDTO instructorDTO, BindingResult bindingResult, Model model) {
         service.createInstructor(instructorDTO);
         return "redirect:/web/instructors";
     }
@@ -71,6 +83,8 @@ public class InstructorWebbController {
 
         return "getInstructor";
     }
+
+
 
     @GetMapping("/{id}/courses")
     public String addCourse(Model model) {

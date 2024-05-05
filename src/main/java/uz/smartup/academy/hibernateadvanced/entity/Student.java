@@ -23,8 +23,8 @@ public class Student {
             inverseJoinColumns = @JoinColumn(name = "course_id"))
     private List<Course> courses;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "student_id")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "student_id", updatable = false)
     private List<Review> reviews;
 
     public int getId() {

@@ -14,11 +14,11 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-//    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-//        this.passwordEncoder = passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional
@@ -27,9 +27,7 @@ public class UserService {
             role.setUsername(user.getUsername());
         }
 
-//        String hashedPassword = passwordEncoder.encode(user.getPassword());
-//        user.setPassword(hashedPassword);
-
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(roles);
 
         userRepository.save(user);
