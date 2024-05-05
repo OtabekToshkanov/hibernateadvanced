@@ -1,7 +1,5 @@
 package uz.smartup.academy.hibernateadvanced.entity;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -115,9 +113,7 @@ public class Course {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", instructor=" + instructor +
-                ", reviews=" + reviews +
-                ", students=" + students +
+                ", instructor=" + instructor+
                 '}';
     }
 }

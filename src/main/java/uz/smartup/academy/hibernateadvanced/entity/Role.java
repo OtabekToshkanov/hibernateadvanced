@@ -31,4 +31,11 @@ public class Role {
         }
         this.id.setRole(role);
     }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                '}';
+    }
 }

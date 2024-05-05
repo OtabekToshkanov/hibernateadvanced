@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Instructor form</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xxxxxx" crossorigin="anonymous" />
+</head>
+
+<body>
+
+<form th:action="@{students/save}" th:object="${student}" method="POST" class="container">
+    <input type="text" th:field="*{userName}" placeholder="username">
+    <br>
+    <input type="text" th:field="*{firstName}" placeholder="First name">
+    <br>
+    <input type="text" th:field="*{lastName}" placeholder="Last name">
+    <br>
+    <input type="text" th:field="*{email}" placeholder="Email">
+    <br>
+    <input type="password" th:field="*{password}" placeholder="password">
+    <br>
+    <input type="submit" value="Submit" class="btn btn-primary">
+</form>
+
+
+</body>
+
+</html>
+

@@ -8,10 +8,12 @@ import java.util.List;
 @Component
 public class ReviewDTOUtil {
     public ReviewDTO toDTO(Review review) {
-        ReviewDTO dto = new ReviewDTO();
-        dto.setId(review.getId());
-        dto.setRating(review.getRating());
-        dto.setComment(review.getComment());
+        ReviewDTO dto = new ReviewDTO.Builder()
+                .id(review.getId())
+                .comment(review.getComment())
+                .rating(review.getRating())
+                .build();
+
         return dto;
     }
 

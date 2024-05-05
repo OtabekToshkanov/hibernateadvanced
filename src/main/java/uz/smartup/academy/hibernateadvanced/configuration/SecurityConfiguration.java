@@ -1,4 +1,4 @@
-package uz.smartup.academy.hibernateadvanced.config;
+package uz.smartup.academy.hibernateadvanced.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,6 +7,8 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -15,48 +17,26 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SecurityConfiguration {
+//
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource) {
         JdbcUserDetailsManager detailsManager = new JdbcUserDetailsManager(dataSource);
 
-        detailsManager.setUsersByUsernameQuery("SELECT username, password, enabled FROM user WHERE username = ?");
+        detailsManager.setUsersByUsernameQuery("select username, password, enabled FROM user WHERE username = ?");
         detailsManager.setAuthoritiesByUsernameQuery("SELECT username, role FROM role WHERE username = ?");
+
 
         return detailsManager;
     }
 
-//    @Bean
-//    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
-//        UserDetails wayne = User.builder()
-//                .username("wayne")
-//                .password("{noop}secret")
-//                .roles("STUDENT")
-//                .build();
-//
-//        UserDetails martin = User.builder()
-//                .username("martin")
-//                .password("{noop}secret")
-//                .roles("STUDENT", "INSTRUCTOR")
-//                .build();
-//
-//        UserDetails melmen = User.builder()
-//                .username("melmen")
-//                .password("{noop}secret")
-//                .roles("STUDENT", "INSTRUCTOR", "MANAGER")
-//                .build();
-//
-//        UserDetails alex = User.builder()
-//                .username("alex")
-//                .password("{noop}secret")
-//                .roles("STUDENT", "INSTRUCTOR", "MANAGER", "ADMIN")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(wayne, martin, melmen, alex);
-//    }
-
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authRegistry ->
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.authorizeHttpRequests(authRegistry ->
                         authRegistry
                                 .requestMatchers(HttpMethod.GET,  "/web/instructors", "/web/instructors/*").hasAnyRole("ADMIN", "MANAGER")
                                 .requestMatchers(HttpMethod.POST, "/web/instructors/*").hasAnyRole("ADMIN", "MANAGER")
@@ -81,9 +61,13 @@ public class SecurityConfiguration {
                                 .permitAll())
                 .logout(LogoutConfigurer::permitAll);
 
-        http.csrf(AbstractHttpConfigurer::disable);
-        http.httpBasic(Customizer.withDefaults());
+        httpSecurity.csrf(AbstractHttpConfigurer::disable);
+        httpSecurity.httpBasic(Customizer.withDefaults());
+//        httpSecurity.passwordManagement(passwordMananegment ->
+//                passwordMananegment.)
 
-        return http.build();
+        return httpSecurity.build();
     }
+
+
 }

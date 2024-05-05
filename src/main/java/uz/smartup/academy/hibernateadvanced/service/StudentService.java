@@ -28,4 +28,8 @@ public interface StudentService {
     List<ReviewDTO> getReviews(int id, int courseId);
 
     void updateReview(int id, int courseId, ReviewDTO review);
+
+    List<CourseDTO> anotherCourses(int id);
+
+    void save(StudentDTO studentDTO);
 }

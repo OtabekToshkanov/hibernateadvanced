@@ -1,7 +1,9 @@
 package uz.smartup.academy.hibernateadvanced.dao;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import uz.smartup.academy.hibernateadvanced.dto.CourseDTO;
 import uz.smartup.academy.hibernateadvanced.entity.*;
@@ -40,11 +42,14 @@ public class AppDAOImpl implements AppDAO {
     @Override
     public void deleteInstructorById(int id) {
         Instructor instructor = findInstructorById(id);
+        System.out.println(instructor);
+
         entityManager.remove(instructor);
     }
 
     @Override
     public void save(Course course) {
+        System.out.println(course);
         entityManager.persist(course);
     }
 
@@ -58,6 +63,8 @@ public class AppDAOImpl implements AppDAO {
 
     @Override
     public void save(Student student) {
+//        System.out.println(student);
+
         entityManager.persist(student);
     }
 
@@ -101,6 +108,8 @@ public class AppDAOImpl implements AppDAO {
 
         return query.getResultList();
     }
+
+
 
     @Override
     public void deleteStudentFromCourse(int studentId, int courseId) {
@@ -177,13 +186,43 @@ public class AppDAOImpl implements AppDAO {
 
     @Override
     public void updateCourse(Course course) {
-        entityManager.merge(course);
+        Course course1 = course;
+        entityManager.merge(course1);
+    }
+
+    @Override
+    public void deleteReview(int id) {
+        Review review = entityManager.find(Review.class, id);
+
+        entityManager.remove(review);
+    }
+
+    @Override
+    public void deleteReviewById(int id) {
+        Review review = entityManager.find(Review.class, id);
+        entityManager.remove(review);
     }
 
     @Override
     public void deleteCourseById(int id) {
         Course course = findCourseById(id);
+        course.setReviews(getReviewsByCourseId(id));
         entityManager.remove(course);
+    }
+
+    @Override
+    public void deleteReviewsByCourseId(int id) {
+        Query query = entityManager.createQuery("DELETE FROM Review r where r.courseId = :id");
+        query.setParameter("id", id);
+    }
+
+    @Override
+    public List<Course> listAnotherCoursesByStudentId(int id) {
+        Student student = findStudentById(id);
+        TypedQuery<Course> query = entityManager.createQuery("FROM Course WHERE :student not MEMBER OF students", Course.class);
+        query.setParameter("student", student);
+
+        return query.getResultList();
     }
 
     //    @Override

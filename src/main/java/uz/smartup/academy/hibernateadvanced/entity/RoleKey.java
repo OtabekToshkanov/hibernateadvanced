@@ -7,6 +7,13 @@ public class RoleKey {
     private String username;
     private String role;
 
+    public RoleKey(String username, String role) {
+        this.username = username;
+        this.role = role;
+    }
+
+    public RoleKey() {}
+
     public String getUsername() {
         return username;
     }
@@ -21,5 +28,13 @@ public class RoleKey {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "RoleKey{" +
+                "username='" + username + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }

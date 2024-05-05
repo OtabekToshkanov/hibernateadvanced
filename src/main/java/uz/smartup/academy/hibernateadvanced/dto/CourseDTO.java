@@ -12,6 +12,7 @@ public class CourseDTO {
         this.title = builder.title;
         this.description = builder.description;
         this.price = builder.price;
+        this.instructorId = builder.instructorId;
     }
 
     public CourseDTO() {
@@ -28,6 +29,7 @@ public class CourseDTO {
             this.id = id;
             return this;
         }
+
 
         public Builder title(String title) {
             this.title = title;
@@ -54,12 +56,10 @@ public class CourseDTO {
         }
     }
 
+    public void setId(int id) {this.id = id; }
+
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -92,5 +92,16 @@ public class CourseDTO {
 
     public void setInstructorId(int instructorId) {
         this.instructorId = instructorId;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseDTO{" +
+                ", id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", instructorId=" + instructorId +
+                '}';
     }
 }

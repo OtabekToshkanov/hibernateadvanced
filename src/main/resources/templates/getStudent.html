@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Student form</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap/style.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+
+<div class="container mt-5 mb-2">
+
+    <div>
+        <h3>
+            Students's first name:
+            <span th:text=" ${student.firstName}"></span>
+        </h3>
+    </div>
+
+    <div>
+        <h3>
+            Students's last name:
+            <span th:text=" ${student.lastName}"></span>
+        </h3>
+    </div>
+
+    <div>
+        <h3>
+            Student's email:
+            <span th:text=" ${student.email}"></span>
+        </h3>
+    </div>
+
+
+    <h3>Student's courses</h3>
+</div>
+
+
+<div class="container">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Reviews</th>
+            <th scope="col">Add reviews</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="course, current : ${courses}">
+            <td th:text="${current.index + 1}"></td>
+            <td th:text="${course.id}"></td>
+            <td th:text="${course.title}"></td>
+            <td th:text="${course.description}"></td>
+            <td th:text="${course.price}"></td>
+
+            <td>
+                <form th:action="@{${student.id} + '/courses/' + ${course.id}} + '/reviews'" method="GET">
+                    <button class="btn btn-warning">
+                        <i class="fa-solid fa-star"></i>
+                    </button>
+                </form>
+            </td>
+
+            <td>
+                <form th:action="@{${student.id} + '/courses/' + ${course.id}} + '/reviews/form'" method="GET">
+                    <button class="btn btn-warning">
+                        <i class="fa-regular fa-star"></i>
+                    </button>
+                </form>
+            </td>
+
+        </tr>
+
+        </tbody>
+
+
+    </table>
+
+    <form th:action=" @{{id}/courses(id=${student.id})}" method="get">
+        <button type="submit" class="btn btn-success btn-lg">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+    </form>
+
+    <br>
+
+    <form th:action="@{/web/students}">
+        <button class="btn btn-danger">
+            back
+        </button>
+    </form>
+
+
+</div>
+
+
+
+</body>
+
+</html>
+

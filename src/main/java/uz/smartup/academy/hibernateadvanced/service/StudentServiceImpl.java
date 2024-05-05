@@ -7,9 +7,12 @@ import uz.smartup.academy.hibernateadvanced.dto.*;
 import uz.smartup.academy.hibernateadvanced.dto.StudentDTOUtil;
 import uz.smartup.academy.hibernateadvanced.entity.Course;
 import uz.smartup.academy.hibernateadvanced.entity.Review;
+import uz.smartup.academy.hibernateadvanced.entity.Role;
 import uz.smartup.academy.hibernateadvanced.entity.Student;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -17,12 +20,14 @@ public class StudentServiceImpl implements StudentService {
     private final StudentDTOUtil dtoUtil;
     private final CourseDTOUtil courseDTOUtil;
     private final ReviewDTOUtil reviewDTOUtil;
+    private final UserService userService;
 
-    public StudentServiceImpl(AppDAO dao, StudentDTOUtil dtoUtil, CourseDTOUtil courseDTOUtil, ReviewDTOUtil reviewDTOUtil) {
+    public StudentServiceImpl(AppDAO dao, StudentDTOUtil dtoUtil, CourseDTOUtil courseDTOUtil, ReviewDTOUtil reviewDTOUtil, UserService userService) {
         this.dao = dao;
         this.dtoUtil = dtoUtil;
         this.courseDTOUtil = courseDTOUtil;
         this.reviewDTOUtil = reviewDTOUtil;
+        this.userService = userService;
     }
 
     @Override
@@ -47,7 +52,12 @@ public class StudentServiceImpl implements StudentService {
     @Override
     @Transactional
     public void updateStudent(StudentDTO studentDTO) {
-        Student student = dtoUtil.toEntity(studentDTO);
+        Student student = dao.findStudentById(studentDTO.getId());
+
+        student.getUser().setFirstName(studentDTO.getFirstName());
+        student.getUser().setLastName(studentDTO.getLastName());
+        student.getUser().setEmail(studentDTO.getEmail());
+
         dao.update(student);
     }
 
@@ -91,5 +101,28 @@ public class StudentServiceImpl implements StudentService {
     @Transactional
     public void updateReview(int id, int courseId, ReviewDTO review) {
         dao.updateStudentReview(id, courseId, reviewDTOUtil.toEntity(review));
+    }
+
+    @Override
+    public List<CourseDTO> anotherCourses(int id) {
+        List<Course> courses = dao.listAnotherCoursesByStudentId(id);
+
+        return courseDTOUtil.toDTOs(courses);
+    }
+
+    @Override
+    @Transactional
+    public void save(StudentDTO studentDTO) {
+        Student student = dtoUtil.toEntity(studentDTO);
+
+        Set<Role> roles = new HashSet<>();
+        Role role = new Role();
+        role.setRole("ROLE_STUDENT");
+        role.setUsername(student.getUser().getUsername());
+        roles.add(role);
+
+        userService.registerUser(student.getUser(), roles);
+
+        dao.save(student);
     }
 }

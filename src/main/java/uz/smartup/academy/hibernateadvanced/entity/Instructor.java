@@ -69,7 +69,6 @@ public class Instructor {
                 "id=" + id +
                 ", instructorDetail=" + instructorDetail +
                 ", user=" + user +
-                ", courses=" + courses +
                 '}';
     }
 }

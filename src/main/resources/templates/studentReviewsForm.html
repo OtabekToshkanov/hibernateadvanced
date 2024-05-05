@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Instructor Form</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xxxxxx" crossorigin="anonymous" />
+
+</head>
+<body>
+
+<form th:action="@{add}" th:object="${review}" method="POST" class="container">
+    <br/>
+    <select th:field="*{rating}">
+        <option th:each="rating : ${ratings}" th:value="${rating}" th:text="${rating}">
+    </select>
+    <br/>
+    <input type="text" th:field="*{comment}" placeholder="comment">
+    <br/>
+    <input type="submit" value="submit" class="btn-primary">
+</form>
+
+</body>
+</html>

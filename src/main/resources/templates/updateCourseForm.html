@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Course Form</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xxxxxx" crossorigin="anonymous" />
+
+</head>
+<body>
+
+<form th:action="@{updateCourse}" th:object="${course}" method="POST" class="container">
+    <input type="hidden" name="_method" value="put">
+    <br/>
+    <input type="text" th:field="*{title}" placeholder="Title">
+    <br/>
+    <input type="text" th:field="*{description}" placeholder="Description">
+    <br/>
+    <input type="text" th:field="*{price}" placeholder="price">
+    <br/>
+    <input type="text" th:field="*{instructorId}" placeholder="price">
+    <br/>
+    <br/>
+    <input type="submit" value="submit" class="btn-primary">
+</form>
+
+</body>
+</html>

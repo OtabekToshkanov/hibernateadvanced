@@ -3,20 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Home page</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xxxxxx" crossorigin="anonymous" />
+
 </head>
 <body>
-    <p>Welcome to our Learning Center</p>
-    <br />
-
-    Username: <span sec:authentication="principal.username"></span>
-    <br />
-
-    Roles: <span sec:authentication="principal.authorities"></span>
-    <br />
+<p>Welcome to our Learning Center</p>
+<br />
 
 
-    <form th:action="@{/logout}" method="POST">
-        <input type="submit" value="Logout" />
-    </form>
+
+<form sec:authorize="hasAnyRole('ADMIN')" th:action="@{web/instructors}">
+    <button class="btn btn-primary">
+        Instructors form
+    </button>
+</form>
+
+<br>
+
+<form sec:authorize="hasAnyRole('ADMIN' , 'INSTRUCTOR')" th:action="@{web/courses}">
+    <button class="btn btn-primary">
+        Courses form
+    </button>
+</form>
+
+<br>
+
+<form sec:authorize="hasAnyRole('ADMIN' , 'INSTRUCTOR')" th:action="@{web/students}">
+    <button class="btn btn-primary">
+        Students form
+    </button>
+</form>
+
+<br>
+
+<form th:action="@{/logout}" method="POST">
+    <input class="btn btn-danger" type="submit" value="Logout" />
+</form>
 </body>
 </html>

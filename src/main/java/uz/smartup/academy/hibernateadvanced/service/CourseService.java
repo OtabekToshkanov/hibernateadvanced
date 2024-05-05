@@ -1,5 +1,6 @@
 package uz.smartup.academy.hibernateadvanced.service;
 
+import jakarta.transaction.Transactional;
 import uz.smartup.academy.hibernateadvanced.dto.CourseDTO;
 import uz.smartup.academy.hibernateadvanced.dto.ReviewDTO;
 import uz.smartup.academy.hibernateadvanced.dto.StudentDTO;
@@ -18,4 +19,5 @@ public interface CourseService {
     void updateCourse(CourseDTO courseDTO);
 
     void deleteCourseById(int id);
+    void addStudent(int id, StudentDTO studentDTO);
 }

@@ -18,13 +18,15 @@ public class CourseDTOUtil {
     }
 
     public CourseDTO toDTO(Course course) {
-        return new CourseDTO.Builder()
+        CourseDTO courseDTO = new CourseDTO.Builder()
                 .id(course.getId())
                 .title(course.getTitle())
                 .description(course.getDescription())
                 .price(course.getPrice())
                 .instructorId(course.getInstructor().getId())
                 .build();
+
+        return courseDTO;
     }
 
     public List<CourseDTO> toDTOs(List<Course> courses) {

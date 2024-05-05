@@ -53,4 +53,12 @@ public interface AppDAO {
     void updateCourse(Course course);
 
     void deleteCourseById(int id);
+
+    List<Course> listAnotherCoursesByStudentId(int id);
+
+    void deleteReviewsByCourseId(int id);
+
+    void deleteReviewById(int id);
+
+    void deleteReview(int id);
 }
