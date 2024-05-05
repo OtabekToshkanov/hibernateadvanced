@@ -2,9 +2,8 @@ package uz.smartup.academy.hibernateadvanced.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import uz.smartup.academy.hibernateadvanced.dto.CourseDTO;
 import uz.smartup.academy.hibernateadvanced.service.InstructorService;
 
 @Controller
@@ -22,6 +21,28 @@ public class InstructorWebController {
 
         return "instructor_list";
     }
+    @GetMapping("/courses/{id}")
+    public String getCourseStudents(@PathVariable int id,Model model) {
+//        model.addAttribute("studentDTO", service.getCourseStudentsById(id));
+        return "course/course-student-form";
+    }
+
+    @GetMapping("/courses/edit/{id}")
+    public String editCourseForm(@PathVariable int id, Model model) {
+//        model.addAttribute("courseDTO", service.getCourseById(id));
+        //System.out.println(service.getCourseById(id));
+        return "course/course-edit";
+    }
+
+    @PostMapping("/courses/{id}")
+    public String updateCourse(@PathVariable int id,
+                               @ModelAttribute("courseDTO") CourseDTO courseDTO,
+                               Model model) {
+
+//        service.updateCourse(courseDTO,id);
+        return "course/courses-form.html";
+    }
+
 
     @RequestMapping("/delete/{id}")
     public String deleteInstructor(@PathVariable long id) {

@@ -1,1 +1,1 @@
-hibernateadvanced
+hibernateadvanced README
