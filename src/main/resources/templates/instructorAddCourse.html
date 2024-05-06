@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+><head>
+    <meta charset="utf-8">
+    <title>Add course</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body{margin-top:20px;}
+        .avatar{
+            width:200px;
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+<div class="container bootstrap snippets bootdey">
+    <h1 class="text-primary">Add Course</h1>
+    <hr>
+        <div class="row">
+            <div class="col-md-9 personal-info">
+                <form class="form-horizontal" th:action="@{/v1/instructor/{id}/courses/new(id=${mxId})}" method="post">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label" >Course name:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text"  name="courseName" placeholder="Java">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label"> Description</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" name="decription">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Duration</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text"  name="duration" placeholder="months"  >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Course Fee:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" name="courseFee" placeholder="$" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Course Format:</label>
+                        <div class="col-lg-8">
+                            <div class="ui-select">
+                                <select id="format" class="form-control"  name="courseFormat">
+                                    <option value="Online">Online</option>
+                                    <option value="Offline">Offline</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Category</label>
+                        <div class="col-lg-8">
+                            <div class="ui-select">
+                                <select id="category" class="form-control"  name="category" >
+                                    <option value="Programming">Programming</option>
+                                    <option value="Arts">Arts</option>
+                                    <option value="Wellness">Wellness</option>
+                                    <option value="Development">Development</option>
+                                    <option value="Humans">Humans</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Submit" style="margin-left: 700px" onclick="redirectToMultipleUrls()">
+                </form>
+            </div>
+        </div>
+</div>
+<hr>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+</script>
+
+</body>
+</html>
+
+

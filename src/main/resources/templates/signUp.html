@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Create an Account</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.css}">
+</head>
+<body>
+<div class="container">
+    <div class="mx-auto text-secondary" style="margin-top: 50px; text-align: center"><h4>Join as a student or instructor</h4></div>
+</div>
+
+<div class="container d-flex gap-5" style="margin-top: 150px; justify-content: center">
+    <div class="card" style="width: 18rem">
+        <div class="card-body">
+            <h5 class="card-title">I am student</h5>
+            <p class="card-text">Student learning is a journey of discovery, where curiosity fuels understanding and knowledge blossoms.</p>
+            <a th:href="@{/v1/student/signup}" class="btn btn-primary" style="background-color: #0b5ed7">sign up</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">I am instructor</h5>
+            <p class="card-text">
+                Teacher learning is an ongoing odyssey of exploration and growth, where each experience is a lesson deeper understanding</p>
+            <a th:href="@{/v1/instructor/signup}" class="btn btn-primary">sign up</a>
+        </div>
+    </div>
+</div>
+<div class="container" style="text-align: center; margin-top: 50px">
+    <p>Already have an account?<a th:href="@{/}">Log In</a></p>
+</div>
+<script src="/static/css/bootstrap/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Create an Account</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="container" style="text-align: center; margin-top: 50px; margin-bottom: 50px; font-family: Georgia" >
+<h4>Sign up to find courses you love</h4>
+</div>
+
+<div class="container" >
+    <form method="post" role="form" th:action="@{/v1/student/signup}" th:object="${student}">
+        <div class="row gap-5" style=" justify-content:center; font-family: Georgia">
+            <div class="col-sm-3">
+                <input type="text" class="form-control" th:field="*{firstName}" name="firstName" placeholder="First name" aria-label="First name">
+            <span th:if="${#fields.hasErrors('firstName')}"
+            th:errors="*{firstName}"
+            >Error</span>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" th:field="*{lastName}" name="lastName" placeholder="Last name" aria-label="Last name">
+            <span th:if="${#fields.hasErrors('lastName')}"
+            th:errors="*{lastName}"
+            >Error</span>
+            </div>
+        </div>
+        <div class="col-sm-5" style="font-family: Georgia; margin-top: 20px; margin-left: 260px">
+            <div class="row mb-3">
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" th:field="*{email}" name="email" aria-label="Email" placeholder="Email">
+                    <span th:if="${#fields.hasErrors('email')}"
+                          th:errors="*{email}"
+                    >Error</span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" th:field="*{password}" name="password" aria-label="Password"  placeholder="Password">
+                    <span th:if="${#fields.hasErrors('password')}"
+                          th:errors="*{password}"
+                    >Error</span>
+                </div>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </div>
+    </form>
+    <hr style="width: 600px; margin-left: 260px">
+    <div style="margin-left: 260px; margin-top: 30px"><button class="btn btn-primary" type="submit"><i class="fa-brands fa-google"></i>  Continue with Google</button></div>
+    <div class="row g-3" style=" font-family: Georgia; margin-left: 260px; margin-top: 30px">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Send me helpful emails to find rewarding work and job leads.
+            </label>
+        </div>
+        <div class="form-check" style="width: 500px">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+            <label class="form-check-label" for="flexCheckChecked">
+                Yes, I understand and agree to the Academy Terms of Service , including the User Agreement and <a href="#">Privacy Policy.</a>
+            </label>
+        </div>
+    </div>
+</div>
+<script src="/static/css/bootstrap/bootstrap.js"></script>
+</body>
+</html>

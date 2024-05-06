@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="utf-8">
+
+    <title>Profile Settings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css}" rel="stylesheet">
+    <style type="text/css">
+        .inf-content{
+            border:1px solid #DDDDDD;
+            -webkit-border-radius:10px;
+            -moz-border-radius:10px;
+            border-radius:10px;
+            box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+<div class="container bootstrap snippets bootdey">
+    <div class="panel-body inf-content">
+        <div class="row">
+            <div class="col-md-4">
+                <img alt style="width:600px;" title class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario">
+                <ul title="Ratings" class="list-inline ratings text-center">
+                    <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <strong>Information</strong><br>
+                <div class="table-responsive">
+                    <table class="table table-user-information" >
+                        <tbody>
+                        <tr >
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-user  text-primary"></span>
+                                    First Name
+                                </strong>
+                            </td>
+                            <td class="text-primary bg-dark" th:text="${instructorDTOProfile.firstName}"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-cloud text-primary"></span>
+                                    Last Name
+                                </strong>
+                            </td>
+
+                            <td class="text-primary bg-dark" th:text="${instructorDTOProfile.lastName}"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-eye-open text-primary"></span>
+                                    Role
+                                </strong>
+                            </td>
+                            <td class="text-primary">
+                                Student
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-envelope text-primary"></span>
+                                    Email
+                                </strong>
+                            </td>
+                            <td class="text-primary bg-dark" th:text="${instructorDTOProfile.email}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-primary">
+                        <a th:href="@{'/v1/instructor/update/' + ${instructorUpdateId}}" style="color: white; text-decoration: none">Edit Profile</a>
+                    </button>
+                    <button type="button" class="btn btn-danger">
+                        <a th:href="@{'/v1/instructor/' + ${instructorUpdateId}+'/logout'}" style="color: white; text-decoration: none">Delete Account</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

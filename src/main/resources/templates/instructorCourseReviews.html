@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Reviews</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/instructorCourseReview.css}">
+</head>
+<body>
+<div class="reviews-container">
+    <h1>Course Reviews</h1>
+    <div class="review" th:each="review: ${allReviews}">
+        <div class="review-header">
+            <h2>StudentId: <span th:text="${review.studentId}"></span></h2>
+            <h3> rating : <span th:text="${review.rating}"></span></h3>
+        </div>
+        <p class="comment">Comment: <span th:text="${review.comment}"></span></p>
+    </div>
+</div>
+</body>
+</html>

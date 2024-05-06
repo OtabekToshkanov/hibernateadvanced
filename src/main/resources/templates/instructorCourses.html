@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Courses</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-md">
+            <a class="navbar-brand border border-1" style="padding: 3px"
+               th:href="@{'/v1/instructor/'+ ${instructorIdCourse}+'/courses/new'}"> Add Course <i
+                    class="fa-solid fa-plus"></i></a>
+        </div>
+    </nav>
+    <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top: 10px">
+        <div class="col" th:each="course : ${courses}">
+            <div class="card h-100">
+                <img th:src="@{/css/bootstrap/images/img_2.png}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" >Course Name: <span th:text="${course.courseName}"></span></h5>
+                    <p class="card-text">Description: <span th:text="${course.decription}"></span></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted"><i class="fa-solid fa-dollar-sign"></i> Course Fee: <span th:text="${course.courseFee}"></span></small>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted"><i class="fa-solid fa-earth-asia"></i> Course Format: <span th:text="${course.courseFormat}"></span></small>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted"><i class="fa-solid fa-hourglass-start"></i> Course Category:  <span th:text="${course.category}"></span></small>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted"><i class="fa-solid fa-person-chalkboard"></i> Instructor:  <span th:text="${instructorName}"></span></small>
+                </div>
+                <div>
+                    <a class="btn btn-secondary" style="margin:5px; text-decoration:none"
+                       th:href="@{'/v1/instructor/'+ ${instructorIdCourse}+'/updateCourse/'+${course.id}}">
+                        Edit
+                    </a>
+                    <a class="btn btn-danger" style="margin:5px; text-decoration:none"
+                       th:href="@{'/v1/instructor/' + ${instructorIdCourse} + '/delete/course/' + ${course.id}}">Delete</a>
+                    <a class="btn btn-primary" style="margin:5px; text-decoration:none"
+                       th:href="@{'/v1/instructor/'+ ${instructorIdCourse}+'/reviews/'+${course.id}}">
+                        Reviews
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <title>Courses</title>-->
+<!--    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.css}">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"-->
+<!--          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="-->
+<!--          crossorigin="anonymous" referrerpolicy="no-referrer"/>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--        <div class="container-md">-->
+<!--            <a class="navbar-brand border border-1" style="padding: 3px"-->
+<!--               th:href="@{'/v1/instructor/'+ ${instructorIdCourse}+'/courses/new'}"> Add Course <i-->
+<!--                    class="fa-solid fa-plus"></i></a>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--    <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top: 10px">-->
+<!--        <div class="col" th:each="course : ${courses}">-->
+<!--            <div class="card h-100">-->
+<!--                <img th:src="@{/css/bootstrap/images/img_2.png}" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title" >Course Name: <span th:text="${course.courseName}"></span></h5>-->
+<!--                    <p class="card-text">Description: <span th:text="${course.decription}"></span></p>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-dollar-sign"></i> Course Fee: <span th:text="${course.courseFee}"></span></small>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-earth-asia"></i> Course Format: <span th:text="${course.courseFormat}"></span></small>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-hourglass-start"></i> Course Category:  <span th:text="${course.category}"></span></small>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-person-chalkboard"></i> Instructor:  <span th:text="${instructorName}"></span></small>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <input class="btn btn-secondary" type="submit" value="Edit" style="margin:5px">-->
+<!--                    <form th:action="@{/v1/instructor/{instructorId}/course/{courseId}(courseId=${course.id}), (instructorId=${instructorId}})}"-->
+<!--                          method="post">-->
+<!--                        <input type="hidden" name="_method" value="delete"/>-->
+<!--                        <button type="submit" class="btn btn-danger">Delete</button>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->

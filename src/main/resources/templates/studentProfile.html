@@ -1,0 +1,244 @@
+<!--<!DOCTYPE html>-->
+<!--<html-->
+<!--        xmlns:th="http://www.thymeleaf.org"-->
+<!--&gt;-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Academy</title>-->
+<!--    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.css}">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+<!--</head>-->
+<!--<body>-->
+<!--<div style="display: flex; align-items: flex-start; gap:20px;">-->
+<!--    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 250px;">-->
+<!--        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">-->
+<!--            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>-->
+<!--            <span class="fs-4"><i class="fa-solid fa-building-columns"></i>Academy</span>-->
+<!--        </a>-->
+<!--        <hr>-->
+<!--        <ul class="nav nav-pills flex-column mb-auto">-->
+<!--            <li class="nav-item">-->
+<!--                <a th:href="@{/}" class="nav-link active" aria-current="page">-->
+<!--                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>-->
+<!--                    <i class="fa-solid fa-house"></i>Home-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a th:href="@{/v1/student/{id}/courses(id=${profileId})}" class="nav-link link-dark">-->
+<!--                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>-->
+<!--                    <i class="fa-solid fa-table-list"></i> My Learning-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a th:href="@{/v1/student/balance}" class="nav-link link-dark">-->
+<!--                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>-->
+<!--                    <i class="fa-regular fa-credit-card"></i> Balance-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a href="#" class="nav-link link-dark">-->
+<!--                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>-->
+<!--                    <i class="fa-solid fa-certificate"></i>Certifications-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a th:href="@{/v1/student/login}" class="nav-link link-dark" onclick="alert('sure about log out')">-->
+<!--                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>-->
+<!--                    <i class="fa-solid fa-right-from-bracket"></i>-->
+<!--                    Log out-->
+<!--                </a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--        <hr>-->
+<!--        <div>-->
+<!--            <a th:href="@{'/v1/student/settings/' + ${profileId} + '?firstName=' + ${firstName} + '&amp;&amp;lastName=' + ${lastName} + '&amp;&amp;email=' + ${email}+'&amp;&amp;localTime='+ ${localTime}}" class="d-flex align-items-center link-dark text-decoration-none"  aria-expanded="false">-->
+<!--                <img th:src="@{/css/bootstrap/images/img_4.png}" alt="" width="32" height="32" class="rounded-circle me-2">-->
+<!--                <strong th:text="${firstName}">us</strong>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="row row-cols-1 row-cols-md-3 g-2" style="margin-top: 10px; width:1050px  ">-->
+<!--        <div class="col">-->
+<!--            <div class="card h-100">-->
+<!--                <img th:src="@{/css/bootstrap/images/img_2.png}" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">Course Name: <i>Python</i></h5>-->
+<!--                    <p class="card-text">Description: Python is commonly used for developing websites and software, task automation, data analysis, and data visualization</p>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-dollar-sign"></i> Course Fee: 100</small>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-earth-asia"></i> Course Format: Offline</small>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-hourglass-start"></i> Course Category: Programming </small>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-person-chalkboard"></i> Instructor: Mashidy</small>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card h-100">-->
+<!--                <img th:src="@{/css/bootstrap/images/img_2.png}" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">Course Name: <i>Python</i></h5>-->
+<!--                    <p class="card-text">Description: Python is commonly used for developing websites and software, task automation, data analysis, and data visualization</p>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-dollar-sign"></i> Course Fee: 100</small>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                  `  <small class="text-muted"><i class="fa-solid fa-earth-asia"></i> Course Format: Offline</small>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-hourglass-start"></i> Course Category: Programming </small>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-person-chalkboard"></i> Instructor: Mashidy</small>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <div class="card h-100">-->
+<!--                <img th:src="@{/css/bootstrap/images/img_2.png}" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">Course Name: <i>Python</i></h5>-->
+<!--                    <p class="card-text">Description: Python is commonly used for developing websites and software, task automation, data analysis, and data visualization</p>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-dollar-sign"></i> Course Fee: 100</small>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-earth-asia"></i> Course Format: Offline</small>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-hourglass-start"></i> Course Category: Programming </small>-->
+<!--                </div>-->
+<!--                <div class="card-footer">-->
+<!--                    <small class="text-muted"><i class="fa-solid fa-person-chalkboard"></i> Instructor: Mashidy</small>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Academy</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div style="display: flex; align-items: flex-start; gap:20px;">
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 250px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-4"><i class="fa-solid fa-building-columns"></i>Academy</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a th:href="@{/}" class="nav-link active" aria-current="page">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                    <i class="fa-solid fa-house"></i>Home
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/v1/student/{id}/courses(id=${profileId})}" class="nav-link link-dark">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                    <i class="fa-solid fa-table-list"></i> My Learning
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/v1/student/balance}" class="nav-link link-dark">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                    <i class="fa-regular fa-credit-card"></i> Balance
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                    <i class="fa-solid fa-certificate"></i>Certifications
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/v1/student/login}" class="nav-link link-dark" onclick="alert('sure about log out')">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Log out
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <div>
+            <a th:href="@{'/v1/student/settings/' + ${profileId} + '?firstName=' + ${firstName} + '&amp;&amp;lastName=' + ${lastName} + '&amp;&amp;email=' + ${email}+'&amp;&amp;localTime='+ ${localTime}}" class="d-flex align-items-center link-dark text-decoration-none"  aria-expanded="false">
+                <img th:src="@{/css/bootstrap/images/img_4.png}" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong th:text="${firstName}">us</strong>
+            </a>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-2" style="margin-top: 10px; width:1050px  ">
+        <div class="col" th:each="course : ${courseList}">
+            <div class="card h-100">
+                <img th:src="@{/css/bootstrap/images/img_2.png}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" >Course Name: <span th:text="${course.courseName}"></span></h5>
+                    <p class="card-text">Description: <span th:text="${course.decription}"></span></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted"><i class="fa-solid fa-dollar-sign"></i> Course Fee: <span th:text="${course.courseFee}"></span></small>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted"><i class="fa-solid fa-earth-asia"></i> Course Format: <span th:text="${course.courseFormat}"></span></small>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted"><i class="fa-solid fa-hourglass-start"></i> Course Category:  <span th:text="${course.category}"></span></small>
+                </div>
+                <div>
+                    <form method="post" th:action="@{/v1/student/{studentId}/addCourse/{courseId}(studentId=${profileId}, courseId=${course.id})}">
+                        <input type="submit" class="btn btn-secondary" value="AddCourse" style="margin:7px" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Student Login</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="container">
+    <button type="button" class="btn btn-primary" style="margin-top: 15px;"><a th:href="@{/}" style="color: white; text-decoration: none">Home</a></button>
+    <div class="border border-secondary" style="font-family: Georgia; width: 700px; margin-left: 170px; margin-top: 50px ">
+       <div style="text-align: center; margin-top: 20px"><h4>Log in to Academy</h4></div>
+        <form method="post" role="form" th:action="@{/v1/student/login}" th:object="${student}">
+            <div class="col-sm-5" style="font-family: Georgia; margin-top: 20px; margin-left: 260px">
+                <div class="row mb-3 g-3">
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" aria-label="Email" placeholder="Email" name="email">
+                    </div>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" aria-label="Password" placeholder="Password" name="password">
+                    </div>
+                </div>
+                <input class="btn btn-primary" type="submit" value="Continue">
+            </div>
+        </form>
+        <div style="margin-left: 260px; margin-top: 30px"><button class="btn btn-primary" type="submit"><i class="fa-brands fa-google"></i>  Continue with Google</button></div>
+        <div style="margin-left: 260px; margin-top: 100px"> <p>Don't have an Academy account?</p></div>
+        <div class="d-grid gap-2 col-2" style="margin-left:260px; margin-top: 20px; margin-bottom: 20px">
+            <button class="btn btn-primary " type="button"><a th:href="@{/v1/student/signup}" style="color: white; text-decoration: none";>Sing Up</a></button>
+        </div>
+    </div>
+</div>
+<script src="/static/css/bootstrap/bootstrap.js"></script>
+</body>
+</html>
