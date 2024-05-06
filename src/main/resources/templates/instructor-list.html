@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Instructor form</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+</head>
+<body>
+
+<h3>Instructor Form</h3>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Youtube Channel</th>
+            <th scope="col">Hobby</th>
+            <th scope="col">Delete button</th>
+            <th scope="col">Update button</th>
+            <th scope="col">More info button</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  th:each="instructor, stat: ${instructors}">
+            <th scope="row" th:text="${stat.index + 1}"></th>
+            <td th:text="${instructor.id}"></td>
+            <td th:text="${instructor.name}"></td>
+            <td th:text="${instructor.email}"></td>
+            <td th:text="${instructor.youtubeChannel}"></td>
+            <td th:text="${instructor.hobby}"></td>
+            <td>
+                <form th:action="@{instructors/{id}/delete(id=${instructor.id})}" method="POST">
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="btn btn-danger">
+                       Delete
+                    </button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{instructors/{id}/updateForm(id=${instructor.id})}" method="POST">
+                    <button type="submit" class="btn btn-success">
+                        Update
+                    </button>
+                </form>
+            </td>
+<!--            ///////////////-->
+            <td>
+<!--                <form>-->
+                <form th:action="@{instructors/{id}(id=${instructor.id})}">
+                    <button type="submit" class="btn btn-primary">
+                        More info
+                    </button>
+                </form>
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+    <form th:action="@{instructors/instructorForm}">
+        <button class="btn btn-primary">
+            Add instructor
+        </button>
+    </form>
+    <br>
+    <form th:action="@{/}">
+        <button type="submit" class="btn btn-primary">
+            Back to Home page
+        </button>
+    </form>
+
+
+
+</body>
+</html>

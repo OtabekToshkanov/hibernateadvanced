@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"  xmlns:sec="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+
+</head>
+<body>
+    <p>Welcome to our Learning Center</p>
+
+    <br/>
+    <br/>
+
+    Username:<span sec:authentication="principal.username"></span>
+    <br/>
+    Roles:<span sec:authentication="principal.authorities"></span>
+
+
+    <br/>
+    <br/>
+
+    <form th:action="@{web/instructors}">
+        <button type="submit" class="btn btn-primary">
+            Web Instructors
+        </button>
+    </form>
+
+    <br/>
+    <br/>
+
+    <form th:action="@{web/courses}">
+        <button type="submit" class="btn btn-primary">
+            Web Courses
+        </button>
+    </form>
+
+    <br/>
+    <br/>
+
+    <form th:action="@{web/students}">
+        <button type="submit" class="btn btn-primary">
+            Web Students
+        </button>
+    </form>
+
+    <br/>
+    <br/>
+
+    <form th:action="@{/logout}" method="POST">
+        <input type="submit" class="btn btn-danger" value="Logout" />
+    </form>
+</body>
+</html>

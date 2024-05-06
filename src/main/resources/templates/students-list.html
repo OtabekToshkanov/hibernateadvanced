@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Students form</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+</head>
+<body>
+
+<h3>Students Form</h3>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Id</th>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Email</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Update</th>
+        <th scope="col">More Info</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr  th:each="student, stat: ${students}">
+        <th scope="row" th:text="${stat.index + 1}"></th>
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.firstName}"></td>
+        <td th:text="${student.lastName}"></td>
+        <td th:text="${student.email}"></td>
+        <td>
+            <form th:action="@{students/{id}/delete(id=${student.id})}" method="POST">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-danger">
+                    Delete
+                </button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{students/{id}/updateStudentForm(id=${student.id})}" method="POST">
+                <button type="submit" class="btn btn-success">
+                    Update
+                </button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{students/{id}(id=${student.id})}">
+                <button type="submit" class="btn btn-primary">
+                    More Info
+                </button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+    <form th:action="@{students/studentForm}">
+        <button class="btn btn-primary">
+            Add student
+        </button>
+    </form>
+    <br/>
+    <form th:action="@{/}">
+        <button type="submit" class="btn btn-primary">
+            Back to Home page
+        </button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Courses form</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+</head>
+<body>
+
+
+
+<h3>Course Form</h3>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Add Course</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr  th:each="course, stat: ${anotherCourses}">
+        <th scope="row" th:text="${stat.index + 1}"></th>
+        <td th:text="${course.id}"></td>
+        <td th:text="${course.title}"></td>
+        <td th:text="${course.description}"></td>
+        <td th:text="${course.price}"></td>
+        <td>
+<!--            <form th:action="@{{studentId}/anotherCourses/{courseId}(studentId=${student.id} ,courseId=${course.id})}">-->
+            <form th:action="@{anotherCourses/{courseId}(courseId=${course.id})}">
+
+                <button type="submit" class="btn btn-primary">
+                    Add
+                </button>
+            </form>
+        </td>
+
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>
