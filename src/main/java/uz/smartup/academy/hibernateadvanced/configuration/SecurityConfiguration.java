@@ -17,10 +17,9 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SecurityConfiguration {
-//
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(12);
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
@@ -29,7 +28,6 @@ public class SecurityConfiguration {
 
         detailsManager.setUsersByUsernameQuery("select username, password, enabled FROM user WHERE username = ?");
         detailsManager.setAuthoritiesByUsernameQuery("SELECT username, role FROM role WHERE username = ?");
-
 
         return detailsManager;
     }
@@ -63,8 +61,6 @@ public class SecurityConfiguration {
 
         httpSecurity.csrf(AbstractHttpConfigurer::disable);
         httpSecurity.httpBasic(Customizer.withDefaults());
-//        httpSecurity.passwordManagement(passwordMananegment ->
-//                passwordMananegment.)
 
         return httpSecurity.build();
     }
