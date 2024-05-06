@@ -1,0 +1,41 @@
+.Contener {
+    width: 400px;
+    margin: 5px auto;
+    padding: 40px 90px;
+    background-color: #95b9f2;
+    color: rgb(13, 1, 1);
+    border-radius: 50px;
+}
+.Contener input {
+   width:350px;
+   border-radius: 30px;
+   padding:8px 20px;
+   font-size:16px;
+}
+.Contener label{
+  display: block;
+  margin-top: 10px;
+  padding: 8px 0px 8px 20px;
+  font-size: 25px;
+}
+.Contener h1{
+    font-size: 28px;
+    font-style: italic;
+    text-align: center;
+}
+.Contener span{
+    color: rgb(126, 11, 11);
+    /* background-color: #fff; */
+    /* padding: 5px 15px; */
+    font-weight: bold;
+}
+.submit{
+    border-radius: 15px;
+    color: white;
+    background-color: blue;
+    display: block;
+    padding: 10px 65px;
+    margin: 25px auto;
+    font-size: 20px;
+   /* width: 200px; */
+}
