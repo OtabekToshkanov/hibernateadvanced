@@ -1,5 +1,7 @@
 package uz.smartup.academy.hibernateadvanced.dto;
 
+import jakarta.persistence.Column;
+
 public class StudentDTO {
     private int id;
     private String firstName;

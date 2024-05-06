@@ -18,6 +18,7 @@ public class CourseDTOUtil {
     }
 
     public CourseDTO toDTO(Course course) {
+//        System.out.println(course);
         return new CourseDTO.Builder()
                 .id(course.getId())
                 .title(course.getTitle())
@@ -28,6 +29,8 @@ public class CourseDTOUtil {
     }
 
     public List<CourseDTO> toDTOs(List<Course> courses) {
-        return courses.stream().map(this::toDTO).toList();
+        var course = courses.stream().map(this::toDTO).toList();
+//        System.out.println("Y" + course);
+        return course;
     }
 }

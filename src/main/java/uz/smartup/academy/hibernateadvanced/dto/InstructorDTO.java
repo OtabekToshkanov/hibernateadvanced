@@ -46,4 +46,15 @@ public class InstructorDTO {
     public void setHobby(String hobby) {
         this.hobby = hobby;
     }
+
+    @Override
+    public String toString() {
+        return "InstructorDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", youtubeChannel='" + youtubeChannel + '\'' +
+                ", hobby='" + hobby + '\'' +
+                '}';
+    }
 }

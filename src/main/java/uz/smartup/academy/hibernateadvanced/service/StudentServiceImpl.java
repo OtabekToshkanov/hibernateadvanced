@@ -46,8 +46,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
-    public void updateStudent(StudentDTO studentDTO) {
-        Student student = dtoUtil.toEntity(studentDTO);
+    public void updateStudent(StudentDTO StudentDTO) {
+        Student student = dtoUtil.toEntity(StudentDTO);
         dao.update(student);
     }
 
@@ -66,6 +66,11 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<CourseDTO> getStudentCourses(int id) {
         List<Course> courses = dao.getStudentCourses(id);
+        return courseDTOUtil.toDTOs(courses);
+    }
+    @Override
+    public List<CourseDTO> anotherCourses(int id) {
+        List<Course> courses = dao.anotherCourses(id);
         return courseDTOUtil.toDTOs(courses);
     }
 

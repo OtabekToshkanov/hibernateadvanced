@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Save review</title>
+    <link rel="stylesheet" th:href="@{/css/demo.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+
+</head>
+<body>
+<br/>
+<form th:action="@{saveReview}" th:object="${review}" method="POST" class="form">
+    <input type="text" th:field="*{rating}" placeholder="rating" />
+    <input type="text" th:field="*{comment}" placeholder="comment" />
+
+
+    <input type="submit" />
+</form>
+</body>
+</html>

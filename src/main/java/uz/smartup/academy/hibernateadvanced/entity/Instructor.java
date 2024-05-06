@@ -13,13 +13,15 @@ public class Instructor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "email")
+    private String email;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetail;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
 
     @OneToMany(mappedBy = "instructor", cascade = CascadeType.ALL)
     private List<Course> courses;
@@ -32,20 +34,28 @@ public class Instructor {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public InstructorDetail getInstructorDetail() {
         return instructorDetail;
     }
 
     public void setInstructorDetail(InstructorDetail instructorDetail) {
         this.instructorDetail = instructorDetail;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public List<Course> getCourses() {
@@ -67,9 +77,10 @@ public class Instructor {
     public String toString() {
         return "Instructor{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 ", instructorDetail=" + instructorDetail +
-                ", user=" + user +
-                ", courses=" + courses +
+//                ", courses=" + courses +
                 '}';
     }
 }

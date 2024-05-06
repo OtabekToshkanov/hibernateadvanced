@@ -20,6 +20,8 @@ public interface StudentService {
     void enrollCourse(int id, int courseId);
 
     List<CourseDTO> getStudentCourses(int id);
+    List<CourseDTO> anotherCourses(int id);
+
 
     void excludeStudentFromCourse(int id, int courseId);
 

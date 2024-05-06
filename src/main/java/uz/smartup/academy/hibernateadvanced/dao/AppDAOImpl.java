@@ -103,6 +103,15 @@ public class AppDAOImpl implements AppDAO {
     }
 
     @Override
+    public List<Course> anotherCourses(int id) {
+        Student student = findStudentById(id);
+        TypedQuery<Course> query = entityManager.createQuery("FROM Course WHERE :student not MEMBER OF students", Course.class);
+        query.setParameter("student", student);
+
+        return query.getResultList();
+    }
+
+    @Override
     public void deleteStudentFromCourse(int studentId, int courseId) {
         Student student = findStudentByIdJoinFetchCourses(studentId);
         student.removeCourseById(courseId);

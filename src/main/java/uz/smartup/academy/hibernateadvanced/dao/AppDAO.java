@@ -34,6 +34,8 @@ public interface AppDAO {
 
     List<Course> getStudentCourses(int id);
 
+    List<Course> anotherCourses(int id);
+
     void deleteStudentFromCourse(int studentId, int courseId);
 
     void addStudentReview(int studentId, int courseId, Review review);

@@ -11,8 +11,8 @@ public class InstructorDTOUtil {
     public Instructor toEntity(InstructorDTO instructorDTO) {
         Instructor instructor = new Instructor();
         instructor.setId(instructorDTO.getId());
-//        instructor.setName(instructorDTO.getName());
-//        instructor.setEmail(instructorDTO.getEmail());
+        instructor.setName(instructorDTO.getName());
+        instructor.setEmail(instructorDTO.getEmail());
 
         InstructorDetail instructorDetail = new InstructorDetail();
         instructorDetail.setHobby(instructorDTO.getHobby());
@@ -26,8 +26,8 @@ public class InstructorDTOUtil {
     public InstructorDTO toDTO(Instructor instructor) {
         InstructorDTO instructorDTO = new InstructorDTO();
         instructorDTO.setId(instructor.getId());
-//        instructorDTO.setName(instructor.getName());
-//        instructorDTO.setEmail(instructor.getEmail());
+        instructorDTO.setName(instructor.getName());
+        instructorDTO.setEmail(instructor.getEmail());
         instructorDTO.setHobby(instructor.getInstructorDetail().getHobby());
         instructorDTO.setYoutubeChannel(instructor.getInstructorDetail().getYoutubeChannel());
 

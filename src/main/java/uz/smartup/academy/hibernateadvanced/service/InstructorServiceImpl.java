@@ -69,6 +69,8 @@ public class InstructorServiceImpl implements InstructorService {
     public List<CourseDTO> getCourses(int id) {
         List<Course> courses = dao.getAllCourcesByInstructorId(id);
 
+        System.out.println("X " + courses.get(0).getInstructor());
+
         return courseDTOUtil.toDTOs(courses);
     }
 }

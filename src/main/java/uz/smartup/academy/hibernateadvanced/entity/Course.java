@@ -116,8 +116,8 @@ public class Course {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", instructor=" + instructor +
-                ", reviews=" + reviews +
-                ", students=" + students +
+//                ", reviews=" + reviews +
+//                ", students=" + students +
                 '}';
     }
 }

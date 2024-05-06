@@ -34,8 +34,8 @@ public class StudentController {
     }
 
     @PutMapping
-    public void updateStudent(@RequestBody StudentDTO studentDTO) {
-        service.updateStudent(studentDTO);
+    public void updateStudent(@RequestBody StudentDTO StudentDTO) {
+        service.updateStudent(StudentDTO);
     }
 
     @DeleteMapping("/{id}")

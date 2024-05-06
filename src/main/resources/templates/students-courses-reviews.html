@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Reviews form</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+</head>
+<body>
+
+
+
+<h3>Reviews Form</h3>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Id</th>
+        <th scope="col">Rating</th>
+        <th scope="col">Comment</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  th:each="review, stat: ${reviews}">
+        <th scope="row" th:text="${stat.index + 1}"></th>
+        <td th:text="${review.id}"></td>
+        <td th:text="${review.rating}"></td>
+        <td th:text="${review.comment}"></td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

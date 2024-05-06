@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update instructor</title>
+    <link rel="stylesheet" th:href="@{/css/demo.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+
+</head>
+<body>
+<br/>
+<form th:action="@{updateInstructors}" th:object="${instructor}" method="POST" class="form">
+    <input type="hidden" name="_method" value="put">
+    <input type="text" th:field="*{name}" placeholder="name" />
+    <input type="text" th:field="*{email}" placeholder="email" />
+    <input type="text" th:field="*{youtubeChannel}" placeholder="youtube channel" />
+    <input type="text" th:field="*{hobby}" placeholder="hobby" />
+    <input type="submit" />
+</form>
+</body>
+</html>
