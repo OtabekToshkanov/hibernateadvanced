@@ -3,6 +3,7 @@ package uz.smartup.academy.hibernateadvanced.service;
 import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import uz.smartup.academy.hibernateadvanced.entity.Instructor;
 import uz.smartup.academy.hibernateadvanced.entity.Role;
 import uz.smartup.academy.hibernateadvanced.entity.User;
 import uz.smartup.academy.hibernateadvanced.repository.UserRepository;
@@ -33,6 +34,10 @@ public class UserService {
         user.setRoles(roles);
 
         userRepository.save(user);
+    }
+
+    public Instructor findInstructorByUsername(String username) {
+        return null;
     }
 
 }
